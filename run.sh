@@ -7,6 +7,16 @@ set -e
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 VENV_DIR="$PROJECT_DIR/.venv"
 
+# ===> Get text and file_name arguments from the command line
+TEXT_PROMPT="$1"
+FILE_NAME="$2"
+
+# Step 0: Check if both arguments are provided
+if [ -z "$TEXT_PROMPT" ] || [ -z "$FILE_NAME" ]; then
+    echo "Usage: $0 \"<text prompt>\" <file_name>"
+    exit 1
+fi
+
 # Step 1: Create .venv if it doesn't exist
 if [ ! -d "$VENV_DIR" ]; then
     echo "Creating virtual environment..."
@@ -27,5 +37,5 @@ if [ ! -f "$PROJECT_DIR/.env" ]; then
     exit 1
 fi
 
-# Step 5: Run the Python script
-python "$PROJECT_DIR/generate_image.py"
+# Step 5: Run the Python script with arguments
+python "$PROJECT_DIR/generate_image.py" --text "$TEXT_PROMPT" --file_name "$FILE_NAME"

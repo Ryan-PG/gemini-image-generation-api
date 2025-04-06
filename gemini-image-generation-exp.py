@@ -54,5 +54,13 @@ def generate(text:str="""Hello""", file_name:str="image.png"):
         else:
             print(chunk.text)
 
+import argparse
+
 if __name__ == "__main__":
-    generate(text=input("Enter your prompt: "), file_name=input("Enter your file name (image): "))
+    parser = argparse.ArgumentParser(description="Generate an image from text using Gemini.")
+    parser.add_argument("--text", required=True, help="Prompt text to generate the image")
+    parser.add_argument("--file_name", default="image", help="Base name for the output image file")
+
+    args = parser.parse_args()
+
+    generate(text=args.text, file_name=args.file_name)

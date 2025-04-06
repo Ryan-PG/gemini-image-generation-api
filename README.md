@@ -1,6 +1,6 @@
 # Gemini Image Generation API (using shell script) 🎨✨
 
-This project is a simple Python CLI tool that generates images using the Gemini API (Google's generative AI). It takes a text prompt and returns an AI-generated image, saved locally.
+This project is a Python-based CLI tool that generates images using the **Gemini API** (Google's generative AI). It uses a **text prompt** to create an AI-generated image and saves it locally. A shell script automates environment setup and script execution.
 
 ---
 
@@ -8,10 +8,11 @@ This project is a simple Python CLI tool that generates images using the Gemini 
 
 ```
 gemini-image-generation-api/
-├── .env                         # Contains your GEMINI_API_KEY
-├── gemini-image-generation-exp.py  # Main Python script
-├── requirements.txt             # Python dependencies
-└── run.sh                       # Shell script to setup and run the project
+├── .env                            # Contains your GEMINI_API_KEY
+├── generate_image.py               # Main Python script
+├── requirements.txt                # Python dependencies
+├── run.sh                          # Shell script to setup and run the project
+└── README.md                       # Project documentation
 ```
 
 ---
@@ -27,41 +28,75 @@ cd gemini-image-generation-api
 
 ### 2. Create `.env` File
 
-Create a `.env` file in the root with your API key:
+Create a `.env` file in the root of the project:
 
 ```
 GEMINI_API_KEY=your_google_api_key_here
 ```
 
-> 💡 Get your Gemini API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
+> 💡 You can get your Gemini API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
 
-### 3. Run the Script
+---
+
+## 🖼️ Usage
+
+### Step-by-Step (via Shell Script)
+
+1. Make the script executable:
 
 ```bash
 chmod +x run.sh
-./run.sh
 ```
 
-You'll be prompted to enter:
-- A **text prompt** (e.g., `A futuristic city at night`)
-- A **file name** for the image (e.g., `output_image`)
+2. Run the project with a **prompt** and **file name**:
 
-The image will be saved as `output_image.png`.
+```bash
+./run.sh "A futuristic city at sunset" sunset_city
+```
+
+This will:
+- Use `"A futuristic city at sunset"` as the generation prompt
+- Save the result as `sunset_city.png` (or with another appropriate extension depending on MIME type)
+
+---
+
+## 🧪 Example
+
+```bash
+./run.sh "A cat wearing sunglasses on the beach" cat_beach
+```
+
+**Output:** `cat_beach.png`
+
+![Example Image](./image.png)
+
+---
+
+## 🧰 Python Script CLI Usage (Alternative)
+
+You can run the Python script directly:
+
+```bash
+python generate_image.py --text "A robot cooking breakfast" --file_name robot_breakfast
+```
 
 ---
 
 ## 📦 Dependencies
 
-Listed in `requirements.txt`:
+Install via `requirements.txt`:
+
 - `python-dotenv`
 - `google-generativeai`
 
+> These will be installed automatically when you run `run.sh`.
+
 ---
 
-## 🛡️ Notes
+## 🛡️ Best Practices
 
-- Do **not commit** your `.env` file or `.venv` directory.
-- Add this to your `.gitignore`:
+- Do **not commit** your `.env` file or `.venv` folder.
+- Add these lines to your `.gitignore`:
 
 ```
 .venv/
@@ -71,15 +106,6 @@ __pycache__/
 
 ---
 
-## 📸 Example Output
-
-Prompt: `A cat wearing sunglasses on the beach`  
-Output: `cat_beach.png`
-
-![Example Image](./image.png)
-
----
-
-## 🛠️ License
+## 📄 License
 
 MIT License © 2025 [Your Name]
