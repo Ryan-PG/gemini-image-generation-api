@@ -38,4 +38,4 @@ if [ ! -f "$PROJECT_DIR/.env" ]; then
 fi
 
 # Step 5: Run the Python script with arguments
-python "$PROJECT_DIR/generate_image.py" --text "$TEXT_PROMPT" --file_name "$FILE_NAME"
+python "$PROJECT_DIR/gemini-image-generation-exp.py" --text "$TEXT_PROMPT" --file_name "$FILE_NAME"
